@@ -1,4 +1,4 @@
-package com.example.lab4;
+package com.example.lab4.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,23 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 @Entity
-@Table(name = "mark_table")
-public class Mark implements Serializable {
+@Table(name = "subject")
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    Long id;
 
-    @Column(name = "presence")
-    private boolean presence;
+    String title;
 
-    @Column(name = "knowledge_level")
-    private int knowledgeLevel;
+    @ManyToOne
+    @JoinColumn(name = "journal_id")
+    Journal journal;
+
 }
