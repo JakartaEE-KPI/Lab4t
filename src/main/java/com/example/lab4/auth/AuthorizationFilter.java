@@ -14,6 +14,7 @@ import java.util.List;
 @WebFilter(value = "/*", filterName = "authorizationFilter")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthorizationFilter implements Filter {
+
     List<String> teacherEndpoints = List.of( // can contain new endpoints
             "/lab4/home.jsp",
             "/lab4/teacher"
@@ -21,7 +22,8 @@ public class AuthorizationFilter implements Filter {
 
     List<String> studentEndpoints = List.of( // can contain new endpoints
             "/lab4/home.jsp",
-            "/lab4/permission.jsp"
+            "/lab4/permission.jsp",
+            "/lab4/mark"
     );
 
     @Override
