@@ -13,6 +13,7 @@ import java.util.List;
 @Singleton
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MarkRepository {
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -38,7 +39,6 @@ public class MarkRepository {
     }
 
     public Mark save(Mark mark) {
-        entityManager.persist(mark);
         return entityManager.merge(mark);
     }
 
