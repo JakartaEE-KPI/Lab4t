@@ -17,7 +17,9 @@ public class AuthorizationFilter implements Filter {
 
     List<String> teacherEndpoints = List.of( // can contain new endpoints
             "/lab4/home.jsp",
-            "/lab4/teacher"
+            "/lab4/add/mark",
+            "/lab4/update/mark",
+            "/lab4/delete/mark"
     );
 
     List<String> studentEndpoints = List.of( // can contain new endpoints

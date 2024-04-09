@@ -15,8 +15,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "teacherServlet", value = "/teacher")
-public class TeacherServlet extends HttpServlet {
+@WebServlet(name = "AddMarkServlet", value = "/add/mark")
+public class AddMarkServlet extends HttpServlet {
 
     @EJB
     private MarkRepository markRepository;
@@ -28,8 +28,8 @@ public class TeacherServlet extends HttpServlet {
     private SubjectRepository subjectRepository;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("s");
         if (XssProtection.containsHtmlTags(req.getParameter("mark")) || XssProtection.containsHtmlTags(req.getParameter("studentId"))
                 || XssProtection.containsHtmlTags(req.getParameter("subjectId"))) {
             XssProtection.displayErrorPage(resp);
@@ -45,7 +45,6 @@ public class TeacherServlet extends HttpServlet {
                 .subject(subjectRepository.findById(subjectId))
                 .presence(isPresent)
                 .build());
-        RequestDispatcher dispatcher = req.getRequestDispatcher("home.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/home.jsp");
     }
 }

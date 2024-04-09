@@ -16,13 +16,32 @@
     <c:choose>
         <c:when test="${userType eq 'teacher'}">
             <h1>You are logged in as a teacher</h1>
-            <form action="${pageContext.request.contextPath}/teacher" method="POST">
+            <form action="${pageContext.request.contextPath}/add/mark" method="POST">
                 <input name="mark" placeholder="Mark" type="number"/>
                 <input name="studentId" placeholder="student id" type="number"/>
                 <input name="subjectId" placeholder="subject id" type="number"/>
                 <label for="isPresent">Is present</label>
                 <input type="checkbox" name="isPresent" id="isPresent">
                 <input type="submit" value="Add mark">
+            </form>
+
+            <form action="${pageContext.request.contextPath}/update/mark" method="POST">
+                <input name="markId" placeholder="Mark id" type="number"/>
+                <input name="mark" placeholder="Mark" type="number"/>
+                <label for="isPresent">Is present</label>
+                <input type="checkbox" name="isPresent" id="isPresent2">
+                <input type="submit" value="Update mark">
+            </form>
+
+            <form action="${pageContext.request.contextPath}/delete/mark" method="POST">
+                <input name="markId" placeholder="Mark id" type="number"/>
+                <input type="submit" value="Delete mark">
+            </form>
+
+            <form action="${pageContext.request.contextPath}/mark" method="GET">
+                <input name="studentId" placeholder="student id" type="number"/>
+                <input name="subjectId" placeholder="subject id" type="number"/>
+                <input type="submit" value="find">
             </form>
         </c:when>
         <c:when test="${userType eq 'student'}">
