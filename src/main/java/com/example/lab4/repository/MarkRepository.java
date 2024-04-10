@@ -1,7 +1,9 @@
 package com.example.lab4.repository;
 
 import com.example.lab4.entity.Mark;
-import jakarta.ejb.Singleton;
+import com.example.lab4.entity.Student;
+import com.example.lab4.entity.Subject;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -10,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-@Singleton
+@Stateless
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MarkRepository {
 
@@ -45,5 +47,21 @@ public class MarkRepository {
     public void deleteById(Long id) {
         Query query = entityManager.createQuery("delete from Mark m where m.id=:id");
         query.setParameter("id", id).executeUpdate();
+    }
+
+    public void testTransaction(Student student, Subject subject, Integer markCount) {
+        for (int i = 0; i < markCount; i++) {
+            int point = (int) (Math.random() * 100);
+            System.out.println(point);
+            if (point < 15) {
+                throw new RuntimeException("UNEXPECTED");
+            }
+            this.save(Mark.builder()
+                    .student(student)
+                    .subject(subject)
+                    .point(point)
+                    .presence(Math.random() < 0.5)
+                    .build());
+        }
     }
 }

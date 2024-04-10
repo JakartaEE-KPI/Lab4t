@@ -1,7 +1,7 @@
 package com.example.lab4.repository;
 
 import com.example.lab4.entity.Subject;
-import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.AccessLevel;
@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-@Singleton
+@Stateless
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SubjectRepository {
     @PersistenceContext

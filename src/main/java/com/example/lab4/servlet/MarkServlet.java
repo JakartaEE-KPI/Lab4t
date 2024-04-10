@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MarkServlet", value = "/mark")
+@WebServlet(name = "MarkServlet", value = "/marks")
 public class MarkServlet extends HttpServlet {
 
     @EJB

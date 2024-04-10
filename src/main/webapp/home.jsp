@@ -16,7 +16,7 @@
     <c:choose>
         <c:when test="${userType eq 'teacher'}">
             <h1>You are logged in as a teacher</h1>
-            <form action="${pageContext.request.contextPath}/add/mark" method="POST">
+            <form action="${pageContext.request.contextPath}/marks/add" method="POST">
                 <input name="mark" placeholder="Mark" type="number"/>
                 <input name="studentId" placeholder="student id" type="number"/>
                 <input name="subjectId" placeholder="subject id" type="number"/>
@@ -25,7 +25,7 @@
                 <input type="submit" value="Add mark">
             </form>
 
-            <form action="${pageContext.request.contextPath}/update/mark" method="POST">
+            <form action="${pageContext.request.contextPath}/marks/update" method="POST">
                 <input name="markId" placeholder="Mark id" type="number"/>
                 <input name="mark" placeholder="Mark" type="number"/>
                 <label for="isPresent">Is present</label>
@@ -33,20 +33,27 @@
                 <input type="submit" value="Update mark">
             </form>
 
-            <form action="${pageContext.request.contextPath}/delete/mark" method="POST">
+            <form action="${pageContext.request.contextPath}/marks/delete" method="POST">
                 <input name="markId" placeholder="Mark id" type="number"/>
                 <input type="submit" value="Delete mark">
             </form>
 
-            <form action="${pageContext.request.contextPath}/mark" method="GET">
+            <form action="${pageContext.request.contextPath}/marks" method="GET">
                 <input name="studentId" placeholder="student id" type="number"/>
                 <input name="subjectId" placeholder="subject id" type="number"/>
                 <input type="submit" value="find">
             </form>
+
+            <form action="${pageContext.request.contextPath}/transaction" method="POST">
+                <input name="markCount" placeholder="Mark count" type="number"/>
+                <input name="studentId" placeholder="Student id" type="number"/>
+                <input name="subjectId" placeholder="Subject id" type="number"/>
+                <input type="submit" value="Test Transaction">
+            </form>
         </c:when>
         <c:when test="${userType eq 'student'}">
             <h1>You are logged in as a student</h1>
-            <form action="${pageContext.request.contextPath}/mark" method="GET">
+            <form action="${pageContext.request.contextPath}/marks" method="GET">
                 <input name="studentId" placeholder="student id" type="number"/>
                 <input name="subjectId" placeholder="subject id" type="number"/>
                 <input type="submit" value="find">

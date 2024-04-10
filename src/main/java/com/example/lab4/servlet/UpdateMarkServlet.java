@@ -15,14 +15,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "UpdateMarkServlet", value = "/update/mark")
+@WebServlet(name = "UpdateMarkServlet", value = "/marks/update")
 public class UpdateMarkServlet extends HttpServlet {
 
     @EJB
     private MarkRepository markRepository;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         if (XssProtection.containsHtmlTags(req.getParameter("markId")) || XssProtection.containsHtmlTags(req.getParameter("mark"))) {
             XssProtection.displayErrorPage(resp);
@@ -38,6 +38,7 @@ public class UpdateMarkServlet extends HttpServlet {
             mark.setPresence(isPresent);
             markRepository.save(mark);
         }
-        resp.sendRedirect(req.getContextPath() + "/home.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/home.jsp");
+        requestDispatcher.forward(req, resp);
     }
 }

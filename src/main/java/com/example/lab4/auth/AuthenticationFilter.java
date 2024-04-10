@@ -39,7 +39,7 @@ public class AuthenticationFilter implements Filter {
         if (isLogin) {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/lab4/login.jsp");
+            ((HttpServletResponse) response).sendRedirect("/journal/login.jsp");
         }
     }
 

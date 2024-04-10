@@ -1,13 +1,13 @@
 package com.example.lab4.repository;
 
 import com.example.lab4.entity.Journal;
-import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
-@Singleton
+@Stateless
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class JournalRepository {
     @PersistenceContext

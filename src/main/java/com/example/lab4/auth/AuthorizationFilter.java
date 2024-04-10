@@ -15,17 +15,18 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthorizationFilter implements Filter {
 
-    List<String> teacherEndpoints = List.of( // can contain new endpoints
-            "/lab4/home.jsp",
-            "/lab4/add/mark",
-            "/lab4/update/mark",
-            "/lab4/delete/mark"
+    List<String> teacherEndpoints = List.of(
+            "/journal/home.jsp",
+            "/journal/marks/add",
+            "/journal/marks/update",
+            "/journal/marks/delete",
+            "/journal/transaction"
     );
 
-    List<String> studentEndpoints = List.of( // can contain new endpoints
-            "/lab4/home.jsp",
-            "/lab4/permission.jsp",
-            "/lab4/mark"
+    List<String> studentEndpoints = List.of(
+            "/journal/home.jsp",
+            "/journal/permission.jsp",
+            "/journal/marks"
     );
 
     @Override
